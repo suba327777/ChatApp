@@ -3,7 +3,7 @@ module.exports = {
   printWidth: 120,
   singleQuote: false,
   //   オブジェクトの末尾にカンマを追加
-  trailingComma: 'all',
+  trailingComma: "all",
   tabWidth: 2,
   semi: true,
 };
