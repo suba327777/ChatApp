@@ -1,13 +1,13 @@
 // Generated using webpack-cli https://github.com/webpack/webpack-cli
-
-// pathモジュールの読み込み
+/* pathモジュールの読み込み */
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-
 const isProduction = process.env.NODE_ENV == "production";
-
 const stylesHandler = MiniCssExtractPlugin.loader;
+/* env */
+const Dotenv = require("dotenv-webpack");
+const enviroment = process.env.NODE_ENV || "dev";
 
 const config = {
   // モジュールの依存関係解決の起点
@@ -28,9 +28,11 @@ const config = {
       template: "./public/index.html",
       filename: "index.html",
     }),
-
     new MiniCssExtractPlugin(),
 
+    new Dotenv({
+      path: path.resolve(__dirname, `.env${enviroment}`),
+    }),
     // Add your plugins here
     // Learn more about plugins from https://webpack.js.org/configuration/plugins/
   ],
