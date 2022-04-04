@@ -26,5 +26,6 @@ module.exports = {
         unnamedComponents: "function-expression",
       },
     ],
+    "react/prop-types": "off",
   },
 };
