@@ -7,7 +7,8 @@ const isProduction = process.env.NODE_ENV == "production";
 const stylesHandler = MiniCssExtractPlugin.loader;
 /* env */
 const Dotenv = require("dotenv-webpack");
-const enviroment = process.env.NODE_ENV || "dev";
+
+const webpack = require("webpack");
 
 const config = {
   // モジュールの依存関係解決の起点
@@ -30,9 +31,8 @@ const config = {
     }),
     new MiniCssExtractPlugin(),
 
-    new Dotenv({
-      path: path.resolve(__dirname, `.env${enviroment}`),
-    }),
+    new Dotenv(),
+
     // Add your plugins here
     // Learn more about plugins from https://webpack.js.org/configuration/plugins/
   ],
