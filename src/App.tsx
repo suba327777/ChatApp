@@ -1,3 +1,4 @@
 import React from "react";
+import { ChatPage } from "./components/pages/ChatPage";
 
-export const App = () => <h1>aa</h1>;
+export const App = () => <ChatPage />;
