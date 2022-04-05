@@ -1,17 +1,15 @@
-import { useFetchData } from "../hooks/useFetchData";
-import { bufChatData } from "../types/bufChatData";
+/* types */
+import { chatData } from "../types/chatData";
 import { dbData } from "../types/dbData";
 
-export const ConvertChatList = () => {
-  const chatData = useFetchData();
-
+export const convertChatList = (data: any) => {
   //   jsonを配列に変換する
-  const chatDataList: bufChatData[] = Object.entries<dbData>(chatData || {}).map(
-    ([key, value]) => ({
-      key,
-      value,
-    }),
-  );
+  const chatDataList: chatData[] = Object.entries<dbData>(data || {}).map(([key, value]) => ({
+    key,
+    userName: value.userName,
+    text: value.text,
+    createdAt: value.createdAt,
+  }));
 
   return chatDataList;
 };

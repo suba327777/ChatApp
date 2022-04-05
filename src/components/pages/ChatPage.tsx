@@ -2,41 +2,40 @@ import React, { ChangeEvent, useCallback, useState } from "react";
 /* atoms */
 import { SubmitButton } from "../atoms/SubmitButton";
 import { TextInput } from "../atoms/TextInput";
-/* firebase */
+import { MessageList } from "../atoms/MessageList";
+/* hooks */
+import { useFetchData } from "../../hooks/useFetchData";
+/* lib */
 import { chatRef } from "../../lib/firebase";
 
-import { ConvertChatList } from "../../lib/ConvertChatList";
-
 export const ChatPage: React.VFC = () => {
-  const [input, setInput] = useState("");
+  // 一回だけ実行
+  useFetchData();
 
+  const [text, setText] = useState("");
+  //   clickした時とenter押した時に文字を削除する
   const inputMessage = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => {
       //   e.preventDefault();
-      setInput(e.target.value);
+      setText(e.target.value);
+      //   enter押した時もonClickの処理に遷移する
     },
-    [setInput],
+    [setText],
   );
+  //   clickした時に状態が変わるのでredux
   const onClick = async () => {
+    if (text === "") return;
     await chatRef.push().set({
-      text: input,
+      text,
       //   createdAt: firebaseTimeStamp.now(),
     });
+    setText("");
   };
-
-  const chat = ConvertChatList();
-
   return (
     <div>
       ChatPage
-      <div>
-        {chat.map((item) => (
-          <div key={item.key}>
-            <p>{item.value.text}</p>
-          </div>
-        ))}
-      </div>
-      <TextInput label="メッセージを入力してね" value={input} onChange={inputMessage} />
+      <MessageList />
+      <TextInput label="メッセージを入力してね" value={text} onChange={inputMessage} />
       <SubmitButton onClick={onClick} />
     </div>
   );
