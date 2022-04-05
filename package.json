@@ -1,7 +1,7 @@
 {
-  "name": "covid-dashborad-api",
+  "name": "chat-app",
   "version": "1.0.0",
-  "description": "コロナの感染者数を調べる",
+  "description": "chat-app",
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server",
@@ -20,8 +20,11 @@
   "devDependencies": {
     "@babel/core": "^7.17.5",
     "@babel/preset-react": "^7.16.7",
+    "@types/firebase": "^3.2.1",
     "@types/react": "^17.0.39",
     "@types/react-dom": "^17.0.11",
+    "@types/react-redux": "^7.1.23",
+    "@types/react-scroll": "^1.8.3",
     "@typescript-eslint/eslint-plugin": "^5.12.1",
     "@typescript-eslint/parser": "^5.12.1",
     "@webpack-cli/generators": "^2.4.2",
@@ -54,8 +57,11 @@
     "@emotion/styled": "^11.8.1",
     "@mui/icons-material": "^5.5.1",
     "@mui/material": "^5.5.3",
+    "@reduxjs/toolkit": "^1.8.1",
     "firebase": "^9.6.10",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "react-redux": "^7.2.8",
+    "react-scroll": "^1.8.6"
   }
 }
