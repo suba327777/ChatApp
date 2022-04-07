@@ -1,6 +1,7 @@
 /* firebase */
 import firebase from "firebase/compat/app";
 import "firebase/compat/database";
+import "firebase/compat/storage";
 
 const firebaseApp = firebase.initializeApp({
   apiKey: process.env.APIKEY,
@@ -14,3 +15,4 @@ const firebaseApp = firebase.initializeApp({
 
 export const db = firebaseApp.database();
 export const chatRef = db.ref("chat/room");
+export const storageRef = firebaseApp.storage().ref("icon");
