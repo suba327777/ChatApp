@@ -15,4 +15,4 @@ const firebaseApp = firebase.initializeApp({
 
 export const db = firebaseApp.database();
 export const chatRef = db.ref("chat/room");
-export const storageRef = firebaseApp.storage().ref("icon");
+export const storageRef = firebaseApp.storage().ref();
