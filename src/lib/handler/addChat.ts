@@ -13,7 +13,7 @@ type Props = {
 
 export const addChat = async ({ userId, userName, imageUrl, text, setText }: Props) => {
   const createdAt = moment();
-  const formatCreatedAt = createdAt.format("MM月DD日HH時mm分 (ddd)");
+  const formatCreatedAt = createdAt.format("YYYY-MM-DD HH:mm:ss");
 
   // TODO文字列がない時はボタンを押せない様にする
 
