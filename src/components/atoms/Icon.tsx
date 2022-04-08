@@ -15,6 +15,6 @@ const SImage = styled.img`
   width: 38px;
   height: 38px;
   object-fit: cover;
-  padding: 13px 2px 0;
+  padding: 4px 4px 0;
   border-radius: 50%;
 `;

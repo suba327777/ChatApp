@@ -1,5 +1,6 @@
 /* packages */
 import React from "react";
+import moment from "moment";
 import styled from "styled-components";
 import { Link } from "react-scroll";
 /* components */
@@ -27,45 +28,64 @@ export const UserMessageArea: React.VFC = () => {
           <div key={item.key}>
             {item.userName === userNameData && item.userId === userIdData ? (
               <SChatRight>
-                <Icon photoUrl={imageUrl} />
+                <STime>{moment(item.createdAt).fromNow()}</STime>
                 <SChatRightText>{item.text}</SChatRightText>
-                <p>{item.createdAt}</p>
+                <Icon photoUrl={imageUrl} />
               </SChatRight>
             ) : (
-              <div>
-                <div>
+              <SChatLeft>
+                <SChatFlex>
                   <Icon photoUrl={item.imageUrl} />
                   <SChatLeftText>{item.text}</SChatLeftText>
-                  <p>{`${item.userName}`}</p>
-                </div>
-
-                <p>{item.createdAt}</p>
-              </div>
+                  <STime>{moment(item.createdAt).fromNow()}</STime>
+                </SChatFlex>
+                <SName>{`${item.userName}`}</SName>
+              </SChatLeft>
             )}
           </div>
         ))
       )}
-      {/* </Link> */}
+      {/* </Link> */}z
     </SBody>
   );
 };
 
-// const SChatContainer = styled.div``;
+const SChatLeft = styled.div`
+  padding: 10px 0 5px;
+`;
+
+const SChatRight = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px;
+`;
+
 const SBody = styled.div`
   background-color: #93aad4;
   margin: 0;
   padding: 0;
 `;
 
-const SChatRight = styled.div`
-  text-align: end;
+const SName = styled.div`
+  font-size: 8px;
+  color: gray;
+  padding-left: 50px;
+`;
+const STime = styled.p`
+  color: gray;
+  padding: 25px 5px 0;
+  font-size: 8px;
+`;
+
+const SChatFlex = styled.div`
+  display: flex;
 `;
 
 const SChatRightText = styled.p`
   position: relative;
   display: inline-block;
-  margin: 1.5em 15px 1.5em 0;
-  padding: 7px 10px;
+  margin: 10px 0 10px;
+  padding: 5px 10px 5px;
   max-width: 100%;
   color: #555;
   font-size: 16px;
@@ -77,15 +97,16 @@ const SChatRightText = styled.p`
     top: 50%;
     right: -24px;
     margin-top: -12px;
-    border: 12px solid transparent;
+    border: 15px solid transparent;
+    margin: 0;
   }
 `;
 
 const SChatLeftText = styled.p`
   position: relative;
   display: inline-block;
-  margin: 1.5em 0 1.5em 15px;
-  padding: 7px 10px;
+  margin: 10px 0 10px;
+  padding: 5px 10px 5px;
   max-width: 100%;
   color: #555;
   font-size: 16px;
@@ -96,7 +117,7 @@ const SChatLeftText = styled.p`
     position: absolute;
     top: 50%;
     left: -24px;
-    margin-top: -12px;
-    border: 12px solid transparent;
+    margin-top: -10px;
+    border: 15px solid transparent;
   }
 `;
