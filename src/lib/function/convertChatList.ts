@@ -8,6 +8,7 @@ export const convertChatList = (data: any) => {
     key,
     userId: value.userId,
     userName: value.userName,
+    imageUrl: value.imageUrl,
     text: value.text,
     createdAt: value.createdAt,
   }));
