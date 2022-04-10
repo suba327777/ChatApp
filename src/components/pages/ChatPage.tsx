@@ -1,9 +1,9 @@
 /* packages */
 import React from "react";
 import moment from "moment";
-/* molucules */
-import { InputArea } from "../molucules/InputArea";
-import { UserMessageArea } from "../molucules/UserMessageArea";
+/* components */
+import { Header } from "../template/Header";
+import { ChatArea } from "../organisms/ChatArea";
 /* hooks */
 import { useFetchData } from "../../hooks/useFetchData";
 import { useFetchImage } from "../../hooks/useFetchImage";
@@ -14,9 +14,9 @@ export const ChatPage: React.VFC = () => {
   useFetchData();
   useFetchImage();
   return (
-    <div>
-      <InputArea />
-      <UserMessageArea />
-    </div>
+    <>
+      <Header />
+      <ChatArea />
+    </>
   );
 };

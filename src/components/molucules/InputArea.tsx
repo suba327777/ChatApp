@@ -1,8 +1,9 @@
 /* packages */
 import React, { ChangeEvent, useCallback, useState } from "react";
+import styled from "styled-components";
 /* components */
-import { SubmitButton } from "../atoms/SubmitButton";
-import { TextInput } from "../atoms/TextInput";
+import { SendButton } from "../atoms/button/SendButton";
+import { TextInput } from "../atoms/input/TextInput";
 /* hooks */
 import { useAppDispatch } from "../../hooks/useAppDispatch";
 /* lib */
@@ -52,10 +53,10 @@ export const InputArea: React.VFC = () => {
   return (
     <div>
       {isLogin ? (
-        <div>
-          <p>{userName}</p>
+        <SInputContainer>
+          <SName>{userName}</SName>
           <TextInput placeholder="メッセージを入力してね" value={text} onChange={inputMessage} />
-          <SubmitButton
+          <SendButton
             onClick={() =>
               addChat({
                 text,
@@ -66,17 +67,29 @@ export const InputArea: React.VFC = () => {
               })
             }
           />
-        </div>
+        </SInputContainer>
       ) : (
-        <div>
+        <SInputContainer>
           <TextInput
             placeholder="ユーザー名を入力してね"
             value={userName}
             onChange={inputUserName}
           />
-          <SubmitButton onClick={login} />
-        </div>
+          <SendButton onClick={login} />
+        </SInputContainer>
       )}
     </div>
   );
 };
+
+const SInputContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  background-color: white;
+`;
+
+const SName = styled.p`
+  font-size: 15px;
+  padding-top: 13px;
+`;

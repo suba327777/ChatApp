@@ -2,9 +2,9 @@
 import React from "react";
 import moment from "moment";
 import styled from "styled-components";
-import { Link } from "react-scroll";
 /* components */
-import { Icon } from "../atoms/Icon";
+import { Icon } from "../atoms/icon/Icon";
+import { Loading } from "../atoms/loading/Loading";
 /* store */
 import { useChatDataSelector } from "../../store/slices/chatDataSlice";
 import { useUserNameDataSelector } from "../../store/slices/user/userNameDataSlice";
@@ -19,10 +19,10 @@ export const UserMessageArea: React.VFC = () => {
 
   return (
     <SBody>
-      {/* <Link to="concept" smooth duration={600} offset={-50}> */}
       {chatData.length === 0 ? (
-        // ローディング処理を入れる
-        <span>ローディング中です.....</span>
+        <SLoadingContainer>
+          <Loading />
+        </SLoadingContainer>
       ) : (
         chatData.map((item) => (
           <div key={item.key}>
@@ -39,16 +39,27 @@ export const UserMessageArea: React.VFC = () => {
                   <SChatLeftText>{item.text}</SChatLeftText>
                   <STime>{moment(item.createdAt).fromNow()}</STime>
                 </SChatFlex>
-                <SName>{`${item.userName}`}</SName>
+                <SName>{item.userName}</SName>
               </SChatLeft>
             )}
           </div>
         ))
       )}
-      {/* </Link> */}z
     </SBody>
   );
 };
+
+const SBody = styled.div`
+  background-color: #93aad4;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+`;
+
+const SLoadingContainer = styled.div`
+  background-color: #93aad4;
+  height: 100vh;
+`;
 
 const SChatLeft = styled.div`
   padding: 10px 0 5px;
@@ -58,12 +69,6 @@ const SChatRight = styled.div`
   display: flex;
   justify-content: flex-end;
   padding: 10px;
-`;
-
-const SBody = styled.div`
-  background-color: #93aad4;
-  margin: 0;
-  padding: 0;
 `;
 
 const SName = styled.div`
