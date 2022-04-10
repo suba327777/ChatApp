@@ -54,6 +54,7 @@
     "webpack-dev-server": "^4.7.4"
   },
   "dependencies": {
+    "@agney/react-loading": "^0.1.2",
     "@emotion/react": "^11.8.2",
     "@emotion/styled": "^11.8.1",
     "@mui/icons-material": "^5.5.1",
@@ -64,7 +65,6 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.8",
-    "react-scroll": "^1.8.6",
     "styled-components": "^5.3.5",
     "styled-reset": "^4.3.4"
   }
