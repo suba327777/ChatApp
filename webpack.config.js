@@ -52,7 +52,10 @@ const config = {
       },
       {
         test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,
-        type: "asset",
+        generator: {
+          filename: "./src/assets/img/[name][ext][query]",
+        },
+        type: "asset/resource",
       },
       {
         test: /\.m?js$/,
