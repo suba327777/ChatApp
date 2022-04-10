@@ -3,12 +3,14 @@ import React from "react";
 import { createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
 /* components */
-import { ChatPage } from "./components/pages/ChatPage";
+import { Header } from "./components/template/Header";
+import { RouterConfig } from "./router/RouterConfig";
 
 export const App = () => (
   <>
     <GlobalStyle />
-    <ChatPage />
+    <Header />
+    <RouterConfig />
   </>
 );
 

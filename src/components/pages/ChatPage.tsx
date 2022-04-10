@@ -2,7 +2,6 @@
 import React from "react";
 import moment from "moment";
 /* components */
-import { Header } from "../template/Header";
 import { ChatArea } from "../organisms/ChatArea";
 /* hooks */
 import { useFetchData } from "../../hooks/useFetchData";
@@ -13,10 +12,5 @@ export const ChatPage: React.VFC = () => {
   // 一回だけ実行
   useFetchData();
   useFetchImage();
-  return (
-    <>
-      <Header />
-      <ChatArea />
-    </>
-  );
+  return <ChatArea />;
 };

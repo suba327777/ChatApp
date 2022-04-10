@@ -1,8 +1,7 @@
 /* packages */
 import React from "react";
 /* components */
-import { InputArea } from "../molucules/InputArea";
-import { UserMessageArea } from "../molucules/UserMessageArea";
+import { InputArea, UserMessageArea } from "../molucules/index";
 
 export const ChatArea: React.VFC = () => (
   <>

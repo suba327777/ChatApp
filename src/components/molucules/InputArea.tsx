@@ -2,8 +2,7 @@
 import React, { ChangeEvent, useCallback, useState } from "react";
 import styled from "styled-components";
 /* components */
-import { SendButton } from "../atoms/button/SendButton";
-import { TextInput } from "../atoms/input/TextInput";
+import { SendButton, TextInput } from "../atoms/index";
 /* hooks */
 import { useAppDispatch } from "../../hooks/useAppDispatch";
 /* lib */

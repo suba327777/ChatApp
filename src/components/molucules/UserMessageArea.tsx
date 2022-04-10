@@ -3,8 +3,7 @@ import React from "react";
 import moment from "moment";
 import styled from "styled-components";
 /* components */
-import { Icon } from "../atoms/icon/Icon";
-import { Loading } from "../atoms/loading/Loading";
+import { Icon, Loading } from "../atoms/index";
 /* store */
 import { useChatDataSelector } from "../../store/slices/chatDataSlice";
 import { useUserNameDataSelector } from "../../store/slices/user/userNameDataSlice";
