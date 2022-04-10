@@ -8,8 +8,6 @@ const stylesHandler = MiniCssExtractPlugin.loader;
 /* env */
 const Dotenv = require("dotenv-webpack");
 
-const webpack = require("webpack");
-
 const config = {
   // モジュールの依存関係解決の起点
   entry: "./index.tsx",
@@ -23,6 +21,7 @@ const config = {
   devServer: {
     open: true,
     host: "localhost",
+    historyApiFallback: true,
   },
   plugins: [
     new HtmlWebpackPlugin({
