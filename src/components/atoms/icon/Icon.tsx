@@ -6,9 +6,7 @@ type Props = {
   photoUrl: string;
 };
 export const Icon: React.VFC<Props> = ({ photoUrl }) => (
-  <div>
-    <SImage src={photoUrl} alt="プロフィール画像" />
-  </div>
+  <SImage src={photoUrl} alt="プロフィール画像" />
 );
 
 const SImage = styled.img`
