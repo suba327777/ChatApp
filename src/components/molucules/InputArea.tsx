@@ -1,8 +1,8 @@
 /* packages */
-import React, { ChangeEvent, useCallback, useState } from "react";
+import React, { ChangeEvent, useCallback, useEffect, useState } from "react";
 import styled from "styled-components";
 /* components */
-import { SendButton, TextInput } from "../atoms/index";
+import { SendButton, TextInput, UserNameInput } from "../atoms/index";
 /* hooks */
 import { useAppDispatch } from "../../hooks/useAppDispatch";
 /* lib */
@@ -22,14 +22,13 @@ export const InputArea: React.VFC = () => {
   const [userName, setUserName] = useState("");
   const [isLogin, setIsLogin] = useState(false);
 
-  dispatch(setUserIdData(userId));
+  useEffect(() => {
+    setUserId(generateRandomChar());
+  }, []);
 
-  //   clickした時とenter押した時に文字を削除する
   const inputMessage = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => {
-      //   e.preventDefault();
       setText(e.target.value);
-      //   enter押した時もonClickの処理に遷移する
     },
     [setText],
   );
@@ -39,12 +38,22 @@ export const InputArea: React.VFC = () => {
     },
     [setUserName],
   );
+  const onKeyDown = (e: KeyboardEvent) => {
+    e.preventDefault();
+    if (e.key === "Enter") {
+      addChat({
+        text,
+        setText,
+        userName,
+        userId,
+        imageUrl,
+      });
+    }
+  };
   const login = () => {
-    if (userName.length === 0) {
-      // TODO 名前を入力してねと表示させる
-    } else {
+    if (userName.length !== 0) {
       setIsLogin(true);
-      setUserId(generateRandomChar());
+      dispatch(setUserIdData(userId));
       dispatch(setUserNameData(userName));
     }
   };
@@ -54,7 +63,12 @@ export const InputArea: React.VFC = () => {
       {isLogin ? (
         <SInputContainer>
           <SName>{userName}</SName>
-          <TextInput placeholder="メッセージを入力してね" value={text} onChange={inputMessage} />
+          <TextInput
+            placeholder="メッセージを入力してね"
+            value={text}
+            onChange={inputMessage}
+            onKeyDown={onKeyDown}
+          />
           <SendButton
             onClick={() =>
               addChat({
@@ -69,7 +83,7 @@ export const InputArea: React.VFC = () => {
         </SInputContainer>
       ) : (
         <SInputContainer>
-          <TextInput
+          <UserNameInput
             placeholder="ユーザー名を入力してね"
             value={userName}
             onChange={inputUserName}
