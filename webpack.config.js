@@ -14,6 +14,7 @@ const config = {
   // バンドルされたファイルの出力先,ファイル名の設定
   output: {
     path: path.resolve(__dirname, "dist"),
+    filename: "bundle.js",
   },
   // ソースマップの設定
   devtool: "inline-source-map",
