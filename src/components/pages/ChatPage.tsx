@@ -4,8 +4,7 @@ import moment from "moment";
 /* components */
 import { ChatArea } from "../organisms/ChatArea";
 /* hooks */
-import { useFetchData } from "../../hooks/useFetchData";
-import { useFetchImage } from "../../hooks/useFetchImage";
+import { useFetchData, useFetchImage } from "../../hooks/index";
 
 export const ChatPage: React.VFC = () => {
   moment.locale("ja");

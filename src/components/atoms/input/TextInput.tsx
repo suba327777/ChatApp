@@ -1,5 +1,5 @@
 /* packages */
-import React, { ChangeEvent } from "react";
+import React, { ChangeEvent, CompositionEventHandler } from "react";
 import { Input } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
@@ -8,8 +8,8 @@ type Props = {
   value: string | number;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
   onKeyDown: any;
-  onCompositionStart: any;
-  onCompositionEnd: any;
+  onCompositionStart: CompositionEventHandler<HTMLDivElement>;
+  onCompositionEnd: CompositionEventHandler<HTMLDivElement>;
 };
 
 const CustomInput = styled(Input)({

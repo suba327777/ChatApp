@@ -8,9 +8,8 @@ import { useAppDispatch } from "../../hooks/useAppDispatch";
 /* lib */
 import { addChat } from "../../lib/handler/addChat";
 import { generateRandomChar } from "../../lib/function/generateRandomChar";
-import { setUserIdData } from "../../store/slices/user/userIdDataSlice";
-import { setUserNameData } from "../../store/slices/user/userNameDataSlice";
-import { useImageUrlDataSelector } from "../../store/slices/imageUrlDataSlice";
+/* store */
+import { setUserIdData, setUserNameData, useImageUrlDataSelector } from "../../store/slices/index";
 
 export const InputArea: React.VFC = () => {
   const dispatch = useAppDispatch();

@@ -5,7 +5,7 @@ import { useAppDispatch } from "./useAppDispatch";
 /* firebase */
 import { storageRef } from "../lib/firebase/firebase";
 /* store */
-import { setImageUrlData } from "../store/slices/imageUrlDataSlice";
+import { setImageUrlData } from "../store/slices/index";
 
 export const useFetchImage = () => {
   try {
