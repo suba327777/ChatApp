@@ -6,7 +6,7 @@ import { useAppDispatch } from "./useAppDispatch";
 import { chatRef } from "../lib/firebase/firebase";
 import { convertChatList } from "../lib/function/convertChatList";
 /* store */
-import { setChatData } from "../store/slices/chatDataSlice";
+import { setChatData, setIsChatCompleted } from "../store/slices/index";
 
 export const useFetchData = () => {
   try {
@@ -17,6 +17,10 @@ export const useFetchData = () => {
           const chatData = await snapshot.val();
           const convertChatData = convertChatList(chatData);
           dispatch(setChatData(convertChatData));
+
+          dispatch(setIsChatCompleted(true));
+        } else {
+          dispatch(setIsChatCompleted(true));
         }
       });
       return () => {
