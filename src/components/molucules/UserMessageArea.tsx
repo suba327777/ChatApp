@@ -5,23 +5,30 @@ import styled from "styled-components";
 /* components */
 import { Icon, Loading } from "../atoms/index";
 /* store */
-import { useChatDataSelector } from "../../store/slices/chatDataSlice";
-import { useUserNameDataSelector } from "../../store/slices/user/userNameDataSlice";
-import { useUserIdDataSelector } from "../../store/slices/user/userIdDataSlice";
-import { useImageUrlDataSelector } from "../../store/slices/imageUrlDataSlice";
+import {
+  useChatDataSelector,
+  useUserIdDataSelector,
+  useUserNameDataSelector,
+  useImageUrlDataSelector,
+  useIsChatCompletedSelector,
+} from "../../store/slices/index";
 
 export const UserMessageArea: React.VFC = () => {
   const chatData = useChatDataSelector();
   const userNameData = useUserNameDataSelector();
   const userIdData = useUserIdDataSelector();
   const imageUrl = useImageUrlDataSelector();
+  const isChatCompleted = useIsChatCompletedSelector();
 
   return (
     <SBody>
-      {chatData.length === 0 ? (
+      {!isChatCompleted && (
         <SLoadingContainer>
           <Loading />
         </SLoadingContainer>
+      )}
+      {chatData.length === 0 ? (
+        <SNotExistChat>チャットが存在しません</SNotExistChat>
       ) : (
         chatData.map((item) => (
           <div key={item.key}>
@@ -60,6 +67,13 @@ const SLoadingContainer = styled.div`
   height: 100vh;
 `;
 
+const SNotExistChat = styled.p`
+  background-color: #93aad4;
+  height: 100vh;
+  text-align: center;
+  padding-top: 35%;
+  font-size: 20px;
+`;
 const SChatLeft = styled.div`
   padding: 10px 0 5px;
 `;
