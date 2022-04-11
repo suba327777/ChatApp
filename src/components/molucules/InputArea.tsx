@@ -21,6 +21,7 @@ export const InputArea: React.VFC = () => {
   const [userId, setUserId] = useState("");
   const [userName, setUserName] = useState("");
   const [isLogin, setIsLogin] = useState(false);
+  const [typing, setTyping] = useState(true);
 
   useEffect(() => {
     setUserId(generateRandomChar());
@@ -39,16 +40,15 @@ export const InputArea: React.VFC = () => {
     [setUserName],
   );
   const onKeyDown = (e: KeyboardEvent) => {
-    e.preventDefault();
-    if (e.key === "Enter") {
-      addChat({
-        text,
-        setText,
-        userName,
-        userId,
-        imageUrl,
-      });
-    }
+    if (e.key !== "Enter" || typing) return;
+
+    addChat({
+      text,
+      setText,
+      userName,
+      userId,
+      imageUrl,
+    });
   };
   const login = () => {
     if (userName.length !== 0) {
@@ -68,6 +68,8 @@ export const InputArea: React.VFC = () => {
             value={text}
             onChange={inputMessage}
             onKeyDown={onKeyDown}
+            onCompositionStart={() => setTyping(true)}
+            onCompositionEnd={() => setTyping(false)}
           />
           <SendButton
             onClick={() =>

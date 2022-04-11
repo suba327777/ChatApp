@@ -8,6 +8,8 @@ type Props = {
   value: string | number;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
   onKeyDown: any;
+  onCompositionStart: any;
+  onCompositionEnd: any;
 };
 
 const CustomInput = styled(Input)({
@@ -16,6 +18,20 @@ const CustomInput = styled(Input)({
   margin: "0 20px",
 });
 
-export const TextInput: React.VFC<Props> = ({ placeholder, value, onChange, onKeyDown }) => (
-  <CustomInput placeholder={placeholder} value={value} onChange={onChange} onKeyDown={onKeyDown} />
+export const TextInput: React.VFC<Props> = ({
+  placeholder,
+  value,
+  onChange,
+  onKeyDown,
+  onCompositionStart,
+  onCompositionEnd,
+}) => (
+  <CustomInput
+    placeholder={placeholder}
+    value={value}
+    onChange={onChange}
+    onKeyDown={onKeyDown}
+    onCompositionStart={onCompositionStart}
+    onCompositionEnd={onCompositionEnd}
+  />
 );
