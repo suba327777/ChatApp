@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server",
+    "clean": "rimraf dist",
     "build": "webpack",
     "lint": "npx eslint --fix ./src/ && npx prettier --write ./src/",
     "prepare": "husky install",
@@ -44,6 +45,7 @@
     "husky": "^7.0.0",
     "mini-css-extract-plugin": "^2.5.3",
     "prettier": "^2.5.1",
+    "rimraf": "^3.0.2",
     "sass": "^1.49.8",
     "sass-loader": "^12.6.0",
     "style-loader": "^3.3.1",
